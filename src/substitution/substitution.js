@@ -1,47 +1,86 @@
 export default class Substitution  {
-  constructor(file) {
+  constructor(file, encryptOrDecrypt, key) {
     this.file = file;
-    this.key = 2
-    // array of alphabet
+    this.key = key
     this.alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-    this.encryptSubstitution = this.encryptSubstitution()
-
-
+    this.encryptOrDecrypt = encryptOrDecrypt;
+    this.ciphertext = ''
+    this.tempIndex = 0
+    this.encryptAndDecrypt = this.encryptAndDecrypt()
   } 
 
-  // encrypt substitution cipher  with key  and this.file 
-  encryptSubstitution() { 
-    this.file.toLowerCase()
-    console.log(this.file)
-    let ciphertext = '';
-    let keyIndex = this.key;
+  encryptAndDecrypt() { 
+    this.file = this.file.toLowerCase()
+
     for (let i = 0; i < this.file.length; i++) {
-      if (this.file[i] === " ") {
-        ciphertext += " ";
-      } else {
-
-        let tempIndex = (this.alphabet.indexOf(this.file[i]))
-        console.log(tempIndex + ' detta är index i alfabetet, bör öka med en')
-
-        
-        if (tempIndex >= 0) { ciphertext += this.alphabet[(tempIndex + this.key) % 26] 
-          console.log((tempIndex + this.key))
-        
-        
-        }
-        else if (tempIndex < 0){ ciphertext += this.alphabet[tempIndex + 26] 
-          console.log(tempIndex + 26 + '  tempIndex under noll')
-        
-        }
-        // keyIndex++;
-        // if (keyIndex === this.alphabet.length) {
-        //   keyIndex = 0;
-        // }
-      }
+      if (this.file[i] === " ") { this.ciphertext += " " } 
+        else { this.encryptAndDecryptAlphabetIndex(i) }
     }
-
-console.log(ciphertext)
-    return ciphertext;
+    return this.ciphertext;
   }
-  
+
+  encryptAndDecryptAlphabetIndex(i) {
+    this.tempIndex = (this.alphabet.indexOf(this.file[i]))
+      if (this.tempIndex >= 0) { this.ciphertext += this.operatorChoice() }
+        else if (this.tempIndex < 0) { this.ciphertext += this.alphabet[this.tempIndex + 26] }
+  }
+
+  operatorChoice() {
+    if (this.encryptOrDecrypt === 'e') { return this.alphabet[(this.tempIndex + this.key) % 26] } 
+    else if (this.encryptOrDecrypt === 'd') { return this.alphabet[(this.tempIndex - this.key) % 26] }
+  }
+
+
+  // decryptSubstitution() {
+  //   this.file = this.file.toLowerCase()
+  //   this.ciphertext = '';
+
+  //   for (let i = 0; i < this.file.length; i++) {
+  //     if (this.file[i] === " ") {
+  //       this.ciphertext += " ";
+  //     } else {
+  //       let tempIndex = (this.alphabet.indexOf(this.file[i]))
+  //       if (tempIndex >= 0) { 
+  //         this.ciphertext += this.alphabet[(tempIndex - this.key) % 26] 
+  //       }
+  //       else if (tempIndex < 0) { 
+  //         this.ciphertext += this.alphabet[tempIndex + 26] 
+  //       }
+  //     }
+  //   }
+  //   return this.ciphertext;
+  // }
+
+    // encryptOrDecryptFunction() {  
+  //   if (this.encryptOrDecrypt === 'e') {
+  //     this.encryptSubstitution()
+  //   } else if (this.encryptOrDecrypt === 'd') {
+  //     this.encryptSubstitution()
+  //   }
+  //   return this.ciphertext
+  // }
+
+  // encryptAndDecrypt() { 
+  //   this.file = this.file.toLowerCase()
+
+  //   for (let i = 0; i < this.file.length; i++) {
+  //     if (this.file[i] === " ") {
+  //       this.ciphertext += " ";
+  //     } else {
+  //       this.encryptAndDecryptAlphabetIndex()
+  //       // this.tempIndex = (this.alphabet.indexOf(this.file[i]))
+  //       // if (this.tempIndex >= 0) { 
+  //       //   this.ciphertext += this.operatorChoice() 
+  //       // }
+  //       // else if (this.tempIndex < 0) { 
+  //       //   this.ciphertext += this.alphabet[this.tempIndex + 26] 
+  //       // }
+  //     }
+  //   }
+  //   return this.ciphertext;
+  // }
+
+
+    //this.ciphertext += this.alphabet[(tempIndex + this.key) % 26] 
+   //this.ciphertext += this.alphabet[(tempIndex + `${this.operator}` + this.key) % 26]
 }

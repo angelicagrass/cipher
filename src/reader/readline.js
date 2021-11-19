@@ -2,7 +2,8 @@ import { resolve } from 'path'
 import readline from 'readline'
 
 export default class Readline {
-  constructor() {
+  constructor(text) {
+    this.text = text
     this.startReader = this.startReadline()
   }
   
@@ -22,7 +23,7 @@ export default class Readline {
     })
 
     return new Promise(resolve => {
-      reader.question('Write your number of choice here: ', text => {
+      reader.question(this.text, text => {
         reader.close()
         return resolve(text)
       })
