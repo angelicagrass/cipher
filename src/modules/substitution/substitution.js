@@ -10,7 +10,6 @@ export default class Substitution  {
   } 
 
   encryptAndDecrypt() { 
-    console.log(this.file + 'inne i sub-----------------------------')
     this.file = this.file.toLowerCase()
 
     for (let i = 0; i < this.file.length; i++) {
