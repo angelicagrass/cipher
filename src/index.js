@@ -47,8 +47,9 @@ let result = new MethodPicker(choice, text, encryptOrDecryptChoice, key)
 
 //remove when done
 console.log('nedaför är index')
+console.log(result)
 //console.log(typeof result.text)
-//console.log(result.text)
+console.log(result.text)
 //methodPicker.pickMethod()
 
-//await writeToFile(result.text)
+await writeToFile(result.text)
