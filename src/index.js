@@ -1,6 +1,3 @@
-import Readline from './modules/reader/readline.js'
-import FileReader from './modules/fileReader/fileReader.js'
-import MethodPicker from './modules/methodPicker/methodPicker.js'
 import infoFromConsole from './modules/infoFromConsole/infoFromConsole.js'
 
 const newConsole = new infoFromConsole()
