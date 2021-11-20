@@ -3,8 +3,7 @@ import FileReader from '../fileReader/fileReader.js'
 import MethodPicker from '../methodPicker/methodPicker.js'
 
 export default class InfoFromConsole {
-    constructor(infoFromConsole) {
-        this.infoFromConsole = infoFromConsole;
+    constructor() {
         this.choice = ''
         this.text = ''
         this.encryptOrDecryptChoice = ''
@@ -12,6 +11,7 @@ export default class InfoFromConsole {
     }
 
     async getInfoFromConsole() { 
+        console.log('inne i getinfo--------------------')
         await this.read()
         await this.encryptOrDecrypt()
         await this.getKeyFromUser()
@@ -19,12 +19,13 @@ export default class InfoFromConsole {
 
         this.key = Number(this.key)
         let result = new MethodPicker(this.choice, this.text, this.encryptOrDecryptChoice, this.key)
+        console.log(result.text)
 
-        await this.writeToFile(result)
-
+        await this.writeToFile(result.text)
     }
 
     async read() {
+        console.log('\n' + 'Choose a encryption method: ' + '\n' + '\n' + '1: substitution' + '\n' + '2: transposition' + '\n')
         const reader = new Readline('Write your number of choice here: ')
         this.choice = await reader.getText()
     }
