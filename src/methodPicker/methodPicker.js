@@ -19,7 +19,7 @@ export default class MethodPicker {
     }
     else if (this.method === '2') { 
       let result = new Transposition(this.file, this.encryptOrDecrypt, this.key) 
-      return result.ciphertext
+      return result.chiperText
     }
   }
 }
