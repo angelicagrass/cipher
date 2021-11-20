@@ -1,15 +1,15 @@
 
 import Transposition from '../modules/transposition/transposition.js';
 
-describe('Tests for tokenizer', () => {
+describe('Tests for encrypt and decrypt', () => {
 
-    it('TC1 WordAndDotGrammar test string: a', () => {
+    it('TC1 Transposition test', () => {
       const fileString = 'hej'
       const method = 'e'
       const key = '312'
       const testTransposition = new Transposition(fileString, method, key)
      
-      expect(testTransposition.chiperText).toBe('jhe')
+      expect(testTransposition.ciphertext).toBe('jhe')
     })
   })
   
