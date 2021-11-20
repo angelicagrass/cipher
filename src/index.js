@@ -1,6 +1,6 @@
-import Readline from './reader/readline.js'
-import FileReader from './fileReader/fileReader.js'
-import MethodPicker from './methodPicker/methodPicker.js'
+import Readline from './modules/reader/readline.js'
+import FileReader from './modules/fileReader/fileReader.js'
+import MethodPicker from './modules/methodPicker/methodPicker.js'
 
 // Create a prettyprinter
 console.log('Choose a encryption method: ' + '\n' + '1: substitution' + '\n' + '2: transposition')
@@ -28,12 +28,12 @@ async function getKeyFromUser() {
 }
 
 async function readFile() {
-  const reader = new FileReader('./src/textFile/textFile.txt')
+  const reader = new FileReader('./src/modules/textFile/textFile.txt')
   text = await reader.readFile()
 }
 
 async function writeToFile(result) {
-  const reader = new FileReader('./src/textFile/textFile.txt')
+  const reader = new FileReader('./src/modules/textFile/textFile.txt')
   text = await reader.writeFile(result)
 }
 
