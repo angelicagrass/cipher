@@ -27,6 +27,6 @@ export default class Substitution {
 
   operatorChoice() {
     if (this.encryptOrDecrypt === 'e') { return this.alphabet[(this.tempIndex + this.key) % 26] }
-    else if (this.encryptOrDecrypt === 'd') { return this.alphabet[(this.tempIndex - this.key) % 26] }
+      else if (this.encryptOrDecrypt === 'd') { return this.alphabet[(this.tempIndex - this.key) % 26] }
   }
 }
