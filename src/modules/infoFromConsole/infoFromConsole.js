@@ -20,6 +20,7 @@ export default class InfoFromConsole {
         this.key = Number(this.key)
         let result = new MethodPicker(this.choice, this.text, this.encryptOrDecryptChoice, this.key)
         console.log(result.text)
+        console.log(result)
 
         await this.writeToFile(result.text)
     }
@@ -37,7 +38,6 @@ export default class InfoFromConsole {
     }
 
     async getKeyFromUser() {
-
         const reader = new Readline('Write your key here: ')
         this.key = await reader.getText()
     }
