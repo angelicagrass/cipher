@@ -16,7 +16,7 @@ export default class MethodPicker { // namn: encryption 2 params
       return result.ciphertext 
     } else if (this.method === '2') { 
       let result = new Transposition(this.file, this.encryptOrDecrypt, this.key) 
-      return result.chiperText
+      return result.ciphertext
     }
   }
 }
