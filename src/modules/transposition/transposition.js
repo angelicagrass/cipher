@@ -11,6 +11,7 @@ export default class Transposition {
     for (let i = 0; i < this.file.length; i = i + this.key.length) {
       this.moveCharactersInString(this.file.substring(i, i + this.key.length), this.key)
     }
+    console.log(this.ciphertext)
     return this.ciphertext
   }
 
