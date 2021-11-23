@@ -11,8 +11,6 @@ export default class MethodPicker {
   }
 
   pick() {
-    console.log('inside pick---------------------------------------')
-    console.log(this.key)
     if (this.method === '1') { 
       let result = new Substitution(this.file, this.encryptOrDecrypt,this.key);
       return result.ciphertext 
