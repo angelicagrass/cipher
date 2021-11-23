@@ -8,10 +8,13 @@ export default class InfoFromConsole {
         this.text = ''
         this.encryptOrDecryptChoice = ''
         this.key = ''
+        this.filePath = ''
+        this.filename = ''
     }
 
     async getInfoFromConsole() { 
-        console.log('inne i getinfo--------------------')
+        await this.getFilePathFromUser()
+        await this.nameOutputFile()
         await this.read()
         await this.encryptOrDecrypt()
         await this.getKeyFromUser()
@@ -19,9 +22,6 @@ export default class InfoFromConsole {
 
         this.key = Number(this.key)
         let result = new MethodPicker(this.choice, this.text, this.encryptOrDecryptChoice, this.key)
-        console.log(result.text)
-        console.log(result)
-
         await this.writeToFile(result.text)
     }
 
@@ -29,6 +29,16 @@ export default class InfoFromConsole {
         console.log('\n' + 'Choose a encryption method: ' + '\n' + '\n' + '1: substitution' + '\n' + '2: transposition' + '\n')
         const reader = new Readline('Write your number of choice here: ')
         this.choice = await reader.getText()
+    }
+
+    async getFilePathFromUser() {
+        const reader = new Readline('Enter a filepath to the textfile: ')
+        this.filePath = await reader.getText()
+    }
+
+    async nameOutputFile() {
+        const reader = new Readline('Enter a name to the output textfile (ex: myfile.txt): ')
+        this.filename = await reader.getText()
     }
 
     async encryptOrDecrypt() {
@@ -42,13 +52,17 @@ export default class InfoFromConsole {
         this.key = await reader.getText()
     }
 
+
+
     async readFile() {
-        const reader = new FileReader('./src/modules/textFile/textFile.txt')
+        // const reader = new FileReader('./src/modules/textFile/textFile.txt')
+        const reader = new FileReader(this.filePath)
         this.text = await reader.readFile()
     }
 
     async writeToFile(result) {
-        const reader = new FileReader('./src/modules/textFile/textFile.txt')
+        //(const reader = new FileReader('./src/modules/textFile/textFile.txt')
+        const reader = new FileReader(`./src/modules/textFile/${this.filename}`)
         this.text = await reader.writeFile(result)
     }
 }
