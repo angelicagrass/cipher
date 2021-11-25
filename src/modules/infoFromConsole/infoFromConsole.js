@@ -48,8 +48,11 @@ export default class InfoFromConsole {
     }
 
     async getKeyFromUser() {
-        const reader = new Readline('Write your key here: ')
+        const reader = new Readline('Write your key (0-256) here: ')
         this.key = await reader.getText()
+        // if(Number(this.key) > 256) {
+        //     throw new Error('Key must be between 0 and 256')
+        // }
     }
 
 
