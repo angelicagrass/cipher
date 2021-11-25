@@ -10,6 +10,9 @@ export default class Substitution {
   }
 
   encryptAndDecrypt() {
+    // if(Number(this.key) > 256) {
+    //   console.log('Key must be less than 256')
+    // }
     this.file = this.file.toLowerCase()
 
     for (let i = 0; i < this.file.length; i++) {
