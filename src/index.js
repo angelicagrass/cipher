@@ -1,5 +1,11 @@
 import infoFromConsole from './modules/infoFromConsole/infoFromConsole.js'
 
-const newConsole = new infoFromConsole()
-newConsole.getInfoFromConsole()
+
+try {
+    const newConsole = new infoFromConsole()
+    newConsole.getInfoFromConsole()    
+} catch (error) {
+    console.log(error)   
+}
+
 
