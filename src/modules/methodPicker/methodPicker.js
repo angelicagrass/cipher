@@ -13,9 +13,11 @@ export default class MethodPicker { // namn: encryption 2 params
   pick() { // choosemethod 2 params
     if (this.method === '1') { 
       let result = new Substitution(this.file, this.encryptOrDecrypt,this.key);
+      console.log(result)
       return result.ciphertext 
     } else if (this.method === '2') { 
       let result = new Transposition(this.file, this.encryptOrDecrypt, this.key) 
+      console.log(result)
       return result.ciphertext
     }
   }

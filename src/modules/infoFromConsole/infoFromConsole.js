@@ -22,6 +22,8 @@ export default class InfoFromConsole {
 
         this.key = Number(this.key)
         let result = new MethodPicker(this.choice, this.text, this.encryptOrDecryptChoice, this.key)
+
+        console.log(result)
         await this.writeToFile(result.text)
     }
 
@@ -48,11 +50,8 @@ export default class InfoFromConsole {
     }
 
     async getKeyFromUser() {
-        const reader = new Readline('Write your key (0-256) here: ')
+        const reader = new Readline('Write your key here: ')
         this.key = await reader.getText()
-        // if(Number(this.key) > 256) {
-        //     throw new Error('Key must be between 0 and 256')
-        // }
     }
 
 
